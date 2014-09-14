@@ -1,0 +1,118 @@
+<form name="equipWeapon">
+  <p>装備する武器種別を選んで下さい</p>
+  <select name="weaponKind" onchange="selectWeapon()">
+    <option value="">* 武器種別</option>
+    <option value="">剣</option>
+    <option value="">槍</option>
+    <option value="">弓</option>
+    <option value="">盾</option>
+    <option value="">杖</option>
+  </select>
+
+  <p>装備する武器を選んで下さい</p>
+  <select name="weapon">
+    <option value="">* 武器</option>
+    <option value=""></option>
+    <option value=""></option>
+    <option value=""></option>
+    <option value=""></option>
+  </select>
+
+  <p>
+  <input type="button" value="装備" onclick="equip()">
+  <input type="button" value="装備を脱ぐ" onclick="equipClear()">
+  </p>
+
+</form>
+
+<div id="equippedStatus"></div>
+
+
+
+<script>
+
+  var sword=new Array(
+    "",
+    "ダガー",
+    "ショートソード",
+    "ロングソード"
+  );
+
+  var spear=new Array(
+    "",
+    "竹の槍",
+    "ショートランス",
+    "パルチザン"
+  );
+
+  var bow=new Array(
+    "",
+    "狩人の弓",
+    "ショートボウ",
+    "クロスボウ"
+  );
+
+  var shield=new Array(
+    "",
+    "バックラー",
+    "シールド",
+    "カイトシールド"
+  );
+
+  var staff=new Array(
+    "",
+    "樫の杖",
+    "マジックワンド",
+    "スペルスタッフ"
+  );
+
+var selectedWeapon =document.equipWeapon.weapon
+
+function selectWeapon(){
+
+  for (i=1; i<4; i++ ){
+
+    switch (document.equipWeapon.weaponKind.selectedIndex){
+      case 0: selectedWeapon.options[i].text="";break;
+      case 1: selectedWeapon.options[i].text=sword[i];break;
+      case 2: selectedWeapon.options[i].text=spear[i];break;
+      case 3: selectedWeapon.options[i].text=bow[i];break;
+      case 4: selectedWeapon.options[i].text=shield[i];break;
+      case 5: selectedWeapon.options[i].text=staff[i];break;
+    }
+  }
+
+  selectedWeapon.selectedIndex=0;
+}
+
+function equip(){
+
+  var equippedStatus="equipped";
+  var equippedWeapon=selectedWeapon.options[selectedWeapon.selectedIndex].text;
+
+  changeEquippedStatus(equippedWeapon);
+}
+
+function equipClear(){
+  var equippedWeapon="none";
+  changeEquippedStatus(equippedWeapon);
+
+}
+
+function changeEquippedStatus(equippedWeapon){
+
+  switch (equippedWeapon){
+    case "none": document.getElementById("equippedStatus").innerHTML=("あなたは今なにも装備していません");break;
+    default : document.getElementById("equippedStatus").innerHTML=(equippedWeapon+"を装備しています");break;
+  }
+
+var equippedWeapon;
+
+}
+
+
+
+
+</script>
+
+
