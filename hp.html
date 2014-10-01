@@ -1,0 +1,78 @@
+<form>
+<div id="start">
+<input type="button" value="start" onclick="start()">
+</div>
+
+<div id="damage1"></div>
+<div id="damage5"></div>
+<div id="damage10"></div>
+<div id="damage20"></div>
+<div id="damage100"></div>
+
+
+
+</form>
+<div id="hoge">hoge</div>
+
+
+<script>
+
+// キャラクターの能力値
+  var hp = 100;
+
+
+function start(){
+  //var hoge = ( "あなたの現在HPは" + hp + "です" );
+
+  
+  display_damage(1)
+  display_damage(5)
+  display_damage(10)
+  display_damage(20)
+  display_damage(100)
+
+  display_hp();
+
+}
+
+function display_damage(damage_point){
+
+  document.getElementById("damage" + damage_point).innerHTML=('<input type="button" value="' + damage_point + 'ダメージを与える" onclick="damage(' + damage_point + ')">')
+
+}
+
+
+function display_hp(){
+
+  if ( hp <= 0 ) {
+  document.getElementById("start").innerHTML=( "あなたは死にました");
+  } else {
+  document.getElementById("start").innerHTML=( "あなたの現在HPは" + hp + "です" );
+  }
+}
+
+
+function damage(damage_point){
+
+  hp = hp - damage_point;
+
+  display_hp();
+
+}
+
+
+
+
+function change(){
+  //a = a - b;
+  change2();
+}
+
+
+function change2(){
+  document.getElementById("button").innerHTML="fuga";
+
+}
+
+
+</script>
