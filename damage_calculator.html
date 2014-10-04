@@ -1,0 +1,59 @@
+<form name="damage_elements">
+<table border=0>
+  <tr>
+    <td>攻撃力</td>
+    <td><input type="text" name="attack_base" value="" size=3></td>
+  </tr><tr>
+    <td>武器攻撃力</td>
+    <td><input type=text" name="attack_weapon" value="" size=3></td>
+  </tr><tr>
+    <td>前列/後列</td>
+    <td><select name="attack_position" value="">
+        <option value="attack_position_front">前列</option>
+        <option value="attack_position_behind">後列</option>
+        </select></td>
+  </tr><tr>
+    <td>特攻</td>
+    <td><input type="checkbox" name="attack_extra"><br></td>
+  </tr>
+</table>
+
+<input type="button" value="計算する" onclick="culculate()">
+
+</form>
+<p>
+<div id=result>ダメージ:</div>
+</p>
+
+
+<script>
+
+function culculate(){
+
+  var attack_base = document.damage_elements.attack_base.value;
+  var attack_weapon = document.damage_elements.attack_weapon.value;
+
+  if (document.damage_elements.attack_position.value == "attack_position_front"){
+    var attack_position = 1;
+  } else if (document.damage_elements.attack_position.value == "attack_position_behind"){
+    var attack_position = 1/2;
+  }
+
+
+  if (document.damage_elements.attack_extra.checked){
+    var attack_extra = 2;
+  } else {
+    var attack_extra = 1;
+  }
+
+  var damage = (eval(attack_base) + eval(attack_weapon)) * attack_extra * attack_position
+
+  document.getElementById("result").innerHTML=("ダメージ: " + damage);
+
+
+
+}
+
+
+
+</script>
