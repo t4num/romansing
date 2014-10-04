@@ -1,7 +1,7 @@
 <form name="damage_elements">
 <table border=0>
   <tr>
-    <td>攻撃力</td>
+    <td width="100">攻撃力</td>
     <td><input type="text" name="attack_base" value="" size=3></td>
   </tr><tr>
     <td>武器攻撃力</td>
@@ -22,7 +22,10 @@
 
 </form>
 <p>
-<div id=result>ダメージ:</div>
+<table border=0><tr>
+  <td width="100">ダメージ</td>
+  <td><div id=result></div></td>
+</tr></table>
 </p>
 
 
@@ -48,7 +51,7 @@ function culculate(){
 
   var damage = (eval(attack_base) + eval(attack_weapon)) * attack_extra * attack_position
 
-  document.getElementById("result").innerHTML=("ダメージ: " + damage);
+  document.getElementById("result").innerHTML=damage;
 
 
 
