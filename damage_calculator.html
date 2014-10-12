@@ -15,7 +15,10 @@
   </tr><tr>
     <td>特攻</td>
     <td><input type="checkbox" name="attack_extra"><br></td>
-  </tr>
+  </tr><tr>
+    <td>防御力</td>
+    <td><input type="text" name="defense" size=3></td>
+  </td>
 </table>
 
 <input type="button" value="計算する" onclick="culculate()">
@@ -42,14 +45,15 @@ function culculate(){
     var attack_position = 1/2;
   }
 
-
   if (document.damage_elements.attack_extra.checked){
     var attack_extra = 2;
   } else {
     var attack_extra = 1;
   }
 
-  var damage = (eval(attack_base) + eval(attack_weapon)) * attack_extra * attack_position
+  var defence = document.damage_elements.defense.value;
+
+  var damage = (eval(attack_base) + eval(attack_weapon)) * attack_extra * attack_position - defence
 
   document.getElementById("result").innerHTML=damage;
 
